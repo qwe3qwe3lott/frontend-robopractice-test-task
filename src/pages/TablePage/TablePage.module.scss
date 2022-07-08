@@ -1,0 +1,8 @@
+@import "../../colors.scss";
+.layout {
+    width: 90%;
+    padding: 1em;
+    display: grid;
+    background-color: $section-background-color;
+    border-radius: 1em;
+}

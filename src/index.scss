@@ -1,0 +1,86 @@
+@import "colors";
+@font-face {
+    font-family: 'Roboto';
+    src: url("./assets/Roboto-Regular.ttf") format("truetype");
+}
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    max-width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
+    min-width: 100%;
+    width: 100%;
+}
+body {
+    display: grid;
+    place-items: start center;
+}
+#root {
+    display: grid;
+    place-items: start center;
+    padding: 1em;
+    font-family: 'Roboto', serif;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: $root-background-color;
+    @media (min-width: 2500px) {
+        font-size: 30px;
+    }
+    @media (max-width: 1750px) {
+        font-size: 22px;
+    }
+    @media (max-width: 1500px) {
+        font-size: 20px;
+    }
+    @media (max-width: 1250px) {
+        font-size: 18px;
+    }
+    @media (max-width: 1000px) {
+        font-size: 16px;
+    }
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
+}
+a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+button, input, select, option {
+    font-size: 1em;
+    background: transparent;
+    color: inherit;
+    border: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+fieldset {
+    border: 0;
+    &[disabled] {
+        & input {
+            opacity: 0.5;
+        }
+    }
+}
+button:hover, input[type=button]:hover, input[type=submit]:hover, select:hover {
+    cursor: pointer;
+}
+button:disabled, select:disabled {
+    opacity: 0.5;
+}
+h1, h2, h3 {
+    font-size: 1em;
+    font-weight: normal;
+}
+li {
+    list-style-type: none;
+}
