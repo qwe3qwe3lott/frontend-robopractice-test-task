@@ -12,7 +12,8 @@ const initialState: State = {
 	currentPage: 1,
 	rowsPerPage: RowsPerPage.FEW,
 	data: [],
-	sortSetup: { ascOrder: true, byFullName: true }
+	sortSetup: { ascOrder: true, byFullName: true },
+	searchValue: ''
 };
 
 const slice = createSlice({
@@ -27,7 +28,13 @@ const slice = createSlice({
 				return;
 			}
 			state.sortSetup = { ...action.payload, ascOrder: true };
-		}
+		},
+		setRowsPerPage(state, action: PayloadAction<RowsPerPage>) {
+			state.rowsPerPage = action.payload;
+			state.currentPage = 1;
+		},
+		setCurrentPage(state, action: PayloadAction<number>) { state.currentPage = action.payload; },
+		setSearchValue(state, action: PayloadAction<string>) { state.searchValue = action.payload; }
 	},
 	extraReducers(builder) {
 		builder.addCase(fetchData.fulfilled, (state, action) => {
@@ -82,5 +89,5 @@ export const fetchData = createAsyncThunk<DataRecord[], void, {state: RootState}
 	}
 );
 
-export const {setSortSetup} = slice.actions;
+export const {setSortSetup, setCurrentPage, setRowsPerPage, setSearchValue} = slice.actions;
 export default slice.reducer;

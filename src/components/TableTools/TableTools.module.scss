@@ -1,0 +1,24 @@
+@import "../../colors";
+.layout {
+  padding: 0 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: $primary-color;
+}
+.info {
+
+}
+.horizontalLayout {
+  display: grid;
+  gap: 1em;
+  grid-auto-flow: column;
+  place-items: center;
+}
+.labelLeft {
+  display: grid;
+  gap: 0.5em;
+  grid-auto-flow: column;
+  place-items: center;
+}

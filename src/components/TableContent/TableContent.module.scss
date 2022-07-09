@@ -2,7 +2,6 @@
 .layout {
   display: grid;
   grid-auto-rows: 1.5em;
-  grid-template-columns: 3em;
   overflow-x: auto;
   overflow-y: hidden;
   &::-webkit-scrollbar {

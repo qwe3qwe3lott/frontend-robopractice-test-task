@@ -7,4 +7,5 @@ export type State = {
     rowsPerPage: RowsPerPage
     data: DataRecord[]
     sortSetup: SortSetup
+    searchValue: string
 }

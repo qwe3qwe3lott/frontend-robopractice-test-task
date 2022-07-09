@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks/typedReduxHooks';
 import {computeCurrentData} from '../../store/slices/table/selectors';
 import {setSortSetup} from '../../store/slices/table';
 import {ResizableColumns, useResizableColumns} from '../../hooks/useResizableColumns';
+import {minutesToRecordValue} from '../../util/minutesToRecordValue';
 
 const Table: React.FC = () => {
 	const data = useAppSelector(computeCurrentData);
@@ -34,7 +35,7 @@ const Table: React.FC = () => {
 			)}/>
 		</li>
 		{data.map((dataRecord, index) => <li className={styles.totalCell} key={dataRecord.id} style={{ gridColumn: '3', gridRow: index+2 }}>
-			{dataRecord.totalValue}
+			{minutesToRecordValue(dataRecord.totalValue)}
 		</li>)}
 	</ul>;
 };
