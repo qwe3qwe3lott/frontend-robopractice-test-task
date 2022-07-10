@@ -22,3 +22,38 @@
   grid-auto-flow: column;
   place-items: center;
 }
+.rowsPicker {
+  padding-right: 1em;
+  color: $primary-color;
+  background-image: url("~/src/assets/primary-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 0.8em;
+}
+.pageChooserLayout {
+  display: grid;
+  gap: 0.25em;
+  grid-auto-flow: column;
+  place-items: center;
+}
+.pageChooser {
+  width: fit-content;
+  text-align: center;
+}
+.pageChooserButton {
+  background-color: $primary-color;
+  color: $primary-text-color;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.3em;
+  background-image: url("~/src/assets/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 0.7em;
+}
+.pageChooserPrevious {
+  transform: rotate(90deg);
+}
+.pageChooserNext {
+  transform: rotate(-90deg);
+}

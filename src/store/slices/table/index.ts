@@ -33,8 +33,13 @@ const slice = createSlice({
 			state.rowsPerPage = action.payload;
 			state.currentPage = 1;
 		},
-		setCurrentPage(state, action: PayloadAction<number>) { state.currentPage = action.payload; },
-		setSearchValue(state, action: PayloadAction<string>) { state.searchValue = action.payload; }
+		setCurrentPage(state, action: PayloadAction<number>) {
+			state.currentPage = action.payload;
+		},
+		setSearchValue(state, action: PayloadAction<string>) {
+			state.searchValue = action.payload;
+			state.currentPage = 1;
+		}
 	},
 	extraReducers(builder) {
 		builder.addCase(fetchData.fulfilled, (state, action) => {
@@ -50,6 +55,7 @@ export const fetchData = createAsyncThunk<DataRecord[], void, {state: RootState}
 		if (!response.ok) return [];
 		const dataDto = await response.json() as DataRecordDto[];
 		const data: DataRecord[] = [];
+		// Буду заполнять пустые дни не основываясь на том, какой месяц пришёл
 		let maxDays = 0;
 		for (const dataRecordDto of dataDto) {
 			const values: DataRecordValue[] = [];

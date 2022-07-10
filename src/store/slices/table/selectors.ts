@@ -38,15 +38,16 @@ export const computeCurrentData = createSelector(
 	}
 );
 export const computeTotalPages = createSelector(
-	[selectData, selectRowsPerPage],
+	[computeFilteredData, selectRowsPerPage],
 	(data, rowsPerPage) => {
 		const value = Math.ceil(data.length / rowsPerPage);
 		return value < 1 ? 1 : value;
 	}
 );
 export const computeTableInfo = createSelector(
-	[selectData, selectCurrentPage, selectRowsPerPage, computeTotalPages],
+	[computeFilteredData, selectCurrentPage, selectRowsPerPage, computeTotalPages],
 	(data, currentPage, rowsPerPage, totalPages) => {
+		if (data.length <= 0) return 'There is no one was found by that full name';
 		const firstRowIndex = (currentPage-1) * rowsPerPage;
 		const isThisLastPage = totalPages === currentPage;
 		return `${firstRowIndex+1}-${isThisLastPage ? data.length : currentPage * rowsPerPage} of ${data.length}`;

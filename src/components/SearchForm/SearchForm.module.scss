@@ -1,0 +1,18 @@
+@import "../../colors";
+.layout {
+  display: grid;
+  place-items: start;
+}
+.labelToLeft {
+  display: grid;
+  gap: 0.5em;
+  grid-auto-flow: column;
+  place-items: center;
+}
+.input {
+  max-width: 10em;
+  background-color: $input-background-color;
+  color: $input-text-color;
+  padding: 0.25em;
+  border-radius: 0.5em;
+}

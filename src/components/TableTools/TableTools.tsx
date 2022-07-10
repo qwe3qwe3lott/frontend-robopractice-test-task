@@ -50,10 +50,10 @@ const CurrentPageBlock: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const currentPage = useAppSelector(selectCurrentPage);
 	const totalPages = useAppSelector(computeTotalPages);
-	const isThisFirstPage = totalPages === 1;
+	const isThisFirstPage = currentPage === 1;
 	const isThisLastPage = currentPage === totalPages;
 	const totalPagesArray = Array.from(Array(totalPages), (_, i) => i + 1);
-	return <div className={styles.horizontalLayout}>
+	return <div className={styles.pageChooserLayout}>
 		<button
 			className={[styles.pageChooserButton, styles.pageChooserPrevious].join(' ')}
 			disabled={isThisFirstPage}
