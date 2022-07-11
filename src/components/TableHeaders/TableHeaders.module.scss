@@ -1,0 +1,74 @@
+@import "../../colors";
+.layout {
+  display: grid;
+  grid-template-columns: 10em 1fr 10em;
+  grid-template-rows: 1.5em;
+}
+.headersList {
+  display: grid;
+  grid-template-rows: 1.5em;
+  overflow: hidden;
+}
+.headerCell {
+  display: flex;
+  justify-content: center;
+  padding: 0.25em;
+  background-color: $primary-color;
+  color: $primary-text-color;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &:hover > .grabberL {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0.25em;
+    cursor: col-resize;
+    background-color: $secondary-color;
+    left: 0;
+  }
+  &:hover > .grabberR {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0.25em;
+    cursor: col-resize;
+    background-color: $secondary-color;
+    right: 0;
+  }
+}
+.grabberR, .grabberL {
+  display: none;
+}
+.headerButton {
+  line-height: 1;
+  text-align: center;
+  display: grid;
+  gap: 0.25em;
+  grid-auto-flow: column;
+  place-items: center;
+}
+.sort {
+  width: 1em;
+  height: 1em;
+}
+.fullNameCell {
+  padding: 0.25em;
+  line-height: 1;
+  background-color: rgba($primary-color, 0.1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.totalCell {
+  padding: 0.25em;
+  line-height: 1;
+  background-color: rgba($primary-color, 0.1);
+  text-align: end;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

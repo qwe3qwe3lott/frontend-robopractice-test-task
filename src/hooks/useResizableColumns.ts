@@ -36,20 +36,24 @@ export const useResizableColumns = () => {
 	const mouseMoveHandler = (event: MouseEvent) => {
 		if (!_element) return;
 		const dx = _toLeft ? _x - event.clientX : event.clientX - _x;
-		const gridTemplateColumns = window.getComputedStyle(_element.parentElement!).gridTemplateColumns.split(' ');
+		// Основываюсь на том, что мы точно знаем в каком порядке и в какой структуре расположены HTML-элементы таблицы
+		const dataGrid = (_resizableColumn !== ResizableColumns.DAY ?
+			_element.parentElement!.parentElement!.children[1] :
+			_element.parentElement!.parentElement!.parentElement!.children[1].children[0]) as HTMLElement;
+		const gridTemplateColumns = window.getComputedStyle(dataGrid).gridTemplateColumns.split(' ');
 		const width = _w + dx;
 		if (_widthCondition(width)) return;
 		switch (_resizableColumn) {
 		case ResizableColumns.FULL_NAME: {
-			_element.parentElement!.style.gridTemplateColumns = `${_w + dx}px 1fr ${gridTemplateColumns[2]}`;
+			_element.parentElement!.style.gridTemplateColumns = dataGrid.style.gridTemplateColumns = `${_w + dx}px 1fr ${gridTemplateColumns[2]}`;
 			break;
 		}
 		case ResizableColumns.DAY:
 			gridTemplateColumns[_columnNumber-1] = `${_w + dx}px`;
-			_element.parentElement!.style.gridTemplateColumns = gridTemplateColumns.join(' ');
+			_element.parentElement!.style.gridTemplateColumns = dataGrid.style.gridTemplateColumns = gridTemplateColumns.join(' ');
 			break;
 		case ResizableColumns.TOTAL_TIME: {
-			_element.parentElement!.style.gridTemplateColumns = `${gridTemplateColumns[0]} 1fr ${_w + dx}px`;
+			_element.parentElement!.style.gridTemplateColumns = dataGrid.style.gridTemplateColumns = `${gridTemplateColumns[0]} 1fr ${_w + dx}px`;
 			break;
 		}
 		}
@@ -58,7 +62,5 @@ export const useResizableColumns = () => {
 		document.removeEventListener('mousemove', mouseMoveHandler);
 		document.removeEventListener('mouseup', mouseUpHandler);
 	};
-	return {
-		mouseDown
-	};
+	return { mouseDown };
 };

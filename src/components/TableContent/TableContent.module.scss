@@ -1,6 +1,28 @@
 @import "../../colors";
 .layout {
   display: grid;
+  grid-template-columns: 10em 1fr 10em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    background-color: rgba($primary-color, 0.1);
+    width: 0.15em;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+  }
+}
+.heightLightedCell {
+  padding: 0.25em;
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: rgba($primary-color, 0.1);
+}
+.dataLayout {
+  display: grid;
   grid-auto-rows: 1.5em;
   overflow-x: auto;
   overflow-y: hidden;
@@ -19,40 +41,4 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.headerCell {
-  display: flex;
-  justify-content: center;
-  padding: 0.25em;
-  background-color: $primary-color;
-  color: $primary-text-color;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  &:hover > .grabber {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0.25em;
-    cursor: col-resize;
-    background-color: $secondary-color;
-    right: 0;
-  }
-}
-.headerButton {
-  line-height: 1;
-  text-align: center;
-  display: grid;
-  gap: 0.25em;
-  grid-auto-flow: column;
-  place-items: center;
-}
-.sort {
-  width: 1em;
-  height: 1em;
-}
-.grabber {
-  display: none;
 }
